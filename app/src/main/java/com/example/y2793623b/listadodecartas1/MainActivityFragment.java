@@ -1,5 +1,6 @@
 package com.example.y2793623b.listadodecartas1;
 
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.widget.ListViewAutoScrollHelper;
@@ -46,7 +47,12 @@ public class MainActivityFragment extends Fragment {
                 Listcartas
         );
 
-
         return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 }
