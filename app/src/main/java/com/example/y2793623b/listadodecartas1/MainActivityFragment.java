@@ -112,17 +112,16 @@ public class MainActivityFragment extends Fragment {
         protected Void doInBackground(Void... params) {
 
             CardAPI api = new CardAPI();
-            String cards = null;
 
+            ArrayList<Card> cards = null;
             try {
-
                 cards = api.getAllCards();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            Log.d("CARDS", cards);
+
+            Log.d("CARDS", cards.toString());
 
             return null;
         }
