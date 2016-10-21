@@ -19,7 +19,7 @@ public class CardAPI {
                 .build();
 
         String url = builtUri.toString();
-
+/*
         try {
 
             String JsonResponse = HttpUtils.get(url);
@@ -30,6 +30,25 @@ public class CardAPI {
         }
 
         return null;
+*/
+
+        return doCall(url);
+    }
+
+
+    private String doCall(String url) {
+
+        String JsonResponse = null;
+
+        try {
+
+            JsonResponse = HttpUtils.get(url);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return JsonResponse;
 
     }
 
