@@ -1,5 +1,6 @@
 package com.example.y2793623b.listadodecartas1;
 
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -52,6 +53,7 @@ public class MainActivityFragment extends Fragment {
                 Listcartas
         );
 
+        lvCartas.setAdapter(adapter);
         return view;
     }
 
@@ -93,9 +95,36 @@ public class MainActivityFragment extends Fragment {
 
     private void refresh() throws IOException {
 
+        /*
         CardAPI api = new CardAPI();
         String cards = api.getAllCards();
 
         Log.d("CARDS", cards);
+        */
     }
+
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            CardAPI api = new CardAPI();
+            String cards = null;
+
+            try {
+
+                cards = api.getAllCards();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            Log.d("CARDS", cards);
+
+            return null;
+        }
+    }
+
+
 }
