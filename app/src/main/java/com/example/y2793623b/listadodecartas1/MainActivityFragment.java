@@ -45,7 +45,7 @@ public class MainActivityFragment extends Fragment {
         String[] cartas = {"carta1" , "carta2" , "carta3" , "carta4" , "carta5"};
 
         Listcartas = new ArrayList<>(Arrays.asList(cartas));
-
+        //Listcartas = new ArrayList<>();
         adapter = new ArrayAdapter<String>(
                 getContext(),
                 R.layout.lv_cartas_row,
@@ -105,11 +105,11 @@ public class MainActivityFragment extends Fragment {
         task.execute();
     }
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Card>> {
 
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected ArrayList<Card> doInBackground(Void... params) {
 
             CardAPI api = new CardAPI();
 
@@ -123,7 +123,17 @@ public class MainActivityFragment extends Fragment {
 
             Log.d("CARDS", cards.toString());
 
-            return null;
+            return cards;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Card> cards) {
+            super.onPostExecute(cards);
+            adapter.clear();
+            for(int x = 0; x < cards.size(); x++)
+            {
+                adapter.add(cards.get(x).getName());
+            }
         }
     }
 
