@@ -10,13 +10,12 @@ import java.io.IOException;
 
 public class CardAPI {
 
-    private final String BASE_URL = "https://docs.magicthegathering.io/";
+    private final String BASE_URL = "https://api.magicthegathering.io/v1/cards/";
 
 
     String getAllCards() throws IOException {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
-                .appendPath("name")
                 .build();
 
         String url = builtUri.toString();
@@ -33,7 +32,6 @@ public class CardAPI {
         return null;
 
     }
-
 
 
 }

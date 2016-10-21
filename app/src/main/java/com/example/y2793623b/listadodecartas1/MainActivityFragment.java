@@ -101,6 +101,8 @@ public class MainActivityFragment extends Fragment {
 
         Log.d("CARDS", cards);
         */
+        RefreshDataTask task = new RefreshDataTask();
+        task.execute();
     }
 
     private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
@@ -119,7 +121,7 @@ public class MainActivityFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
+
             Log.d("CARDS", cards);
 
             return null;

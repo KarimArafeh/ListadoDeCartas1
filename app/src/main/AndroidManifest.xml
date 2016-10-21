@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.y2793623b.listadodecartas1">
 
-    //permis de "internet" : 
+    //permis de "internet" :
     <uses-permission android:name="android.permission.INTERNET" />
 
 
