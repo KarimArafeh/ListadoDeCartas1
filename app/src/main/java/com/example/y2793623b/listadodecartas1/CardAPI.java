@@ -2,7 +2,12 @@ package com.example.y2793623b.listadodecartas1;
 
 import android.net.Uri;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by y2793623b on 18/10/16.
@@ -10,10 +15,10 @@ import java.io.IOException;
 
 public class CardAPI {
 
-    private final String BASE_URL = "https://api.magicthegathering.io/v1/cards/";
+    private final String BASE_URL = "https://api.magicthegathering.io/v1/cards";
 
 
-    String getAllCards() throws IOException {
+    ArrayList<Card> getAllCards() throws IOException {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
@@ -36,7 +41,7 @@ public class CardAPI {
     }
 
 
-    private String doCall(String url) {
+    private ArrayList<Card> doCall(String url) {
 
         String JsonResponse = null;
 
@@ -48,7 +53,37 @@ public class CardAPI {
             e.printStackTrace();
         }
 
-        return JsonResponse;
+        return processJson(JsonResponse);
+
+    }
+
+    private ArrayList<Card> processJson(String jsonResponse) {
+
+        ArrayList<Card> cartas = new ArrayList<>();
+
+        try {
+
+            JSONObject data = new JSONObject(jsonResponse);
+            JSONArray jsonCartas = data.getJSONArray("cards");
+            for (int x = 0; x < jsonCartas.length(); x ++)
+            {
+                JSONObject jsonCard = jsonCartas.getJSONObject(x);
+
+                Card carta = new Card();
+
+                carta.setName(jsonCard.getString("name"));
+
+
+                cartas.add(carta);
+
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return cartas;
 
     }
 

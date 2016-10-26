@@ -6,7 +6,7 @@ package com.example.y2793623b.listadodecartas1;
 
 public class Card {
 
-    String mame;
+    String name;
     String type;
     String rarity;
     String set;
@@ -43,12 +43,12 @@ public class Card {
         this.rarity = rarity;
     }
 
-    public String getMame() {
-        return mame;
+    public String getName() {
+        return name;
     }
 
-    public void setMame(String mame) {
-        this.mame = mame;
+    public void setName(String name) {
+        this.name = name;
     }
 
     String text;
@@ -56,7 +56,7 @@ public class Card {
     @Override
     public String toString() {
         return "Card{" +
-                "mame='" + mame + '\'' +
+                "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", rarity='" + rarity + '\'' +
                 ", set='" + set + '\'' +
