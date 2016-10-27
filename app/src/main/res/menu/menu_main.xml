@@ -5,6 +5,6 @@
     <item
         android:orderInCategory="100"
         android:title="Refresh"
-        app:showAsAction="never"
+        app:showAsAction="always"
         android:id="@+id/action_refresh" />
 </menu>
