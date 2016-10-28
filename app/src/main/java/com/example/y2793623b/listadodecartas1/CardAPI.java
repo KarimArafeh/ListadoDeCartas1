@@ -41,6 +41,19 @@ public class CardAPI {
     }
 
 
+    ArrayList<Card> getCartasPorTipo(String tipo) {
+        Uri builtUri = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendQueryParameter("type", tipo)
+                .build();
+
+        String url = builtUri.toString();
+
+               return doCall(url);
+           }
+
+
+
     private ArrayList<Card> doCall(String url) {
 
         String JsonResponse = null;
@@ -72,7 +85,6 @@ public class CardAPI {
                 Card carta = new Card();
 
                 carta.setName(jsonCard.getString("name"));
-
 
                 cartas.add(carta);
 

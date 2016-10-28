@@ -1,6 +1,8 @@
 package com.example.y2793623b.listadodecartas1;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -111,17 +113,29 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected ArrayList<Card> doInBackground(Void... params) {
 
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String nombre = preferences.getString("name" , "NomPorDefecto");
+            String tipo = preferences.getString("type" , "TipoPorDefecto");
+
             CardAPI api = new CardAPI();
 
             ArrayList<Card> cards = null;
             try {
-                cards = api.getAllCards();
+                //cards = api.getAllCards();
+                if(tipo.equals("TipoPorDefecto"))
+                {
+                    cards = api.getAllCards();
+                }else
+                {
+                    cards = api.getCartasPorTipo(nombre);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
 
-            Log.d("CARDS", cards.toString());
+            //Log.d("CARDS", cards.toString());
+            Log.d("CARDS", cards != null ? cards.toString() : null);
 
             return cards;
         }
