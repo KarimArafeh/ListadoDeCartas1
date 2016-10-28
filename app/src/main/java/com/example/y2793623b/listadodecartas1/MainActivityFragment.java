@@ -44,9 +44,10 @@ public class MainActivityFragment extends Fragment {
 
         ListView lvCartas = (ListView) view.findViewById(R.id.LvCartas);
 
-        String[] cartas = {"carta1" , "carta2" , "carta3" , "carta4" , "carta5"};
+        //String[] cartas = {"carta1" , "carta2" , "carta3" , "carta4" , "carta5"};
 
-        Listcartas = new ArrayList<>(Arrays.asList(cartas));
+        //Listcartas = new ArrayList<>(Arrays.asList(cartas));
+        Listcartas = new ArrayList<>();
         //Listcartas = new ArrayList<>();
         adapter = new ArrayAdapter<String>(
                 getContext(),
@@ -57,6 +58,16 @@ public class MainActivityFragment extends Fragment {
 
         lvCartas.setAdapter(adapter);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //Notifiquem a l'Activity que anem a agregar items de menu.
