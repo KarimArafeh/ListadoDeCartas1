@@ -5,11 +5,9 @@
     <item
         android:orderInCategory="100"
         android:title="Refresh"
-        app:showAsAction="always"
         android:id="@+id/action_refresh" />
     <item
         android:orderInCategory="100"
         android:title="Setting"
-        app:showAsAction="always"
         android:id="@+id/action_setting" />
 </menu>
