@@ -30,8 +30,8 @@ import java.util.StringTokenizer;
 public class MainActivityFragment extends Fragment {
 
 
-    private ArrayList<String> Listcartas;
-    private ArrayAdapter<String> adapter;
+    private ArrayList<Card> Listcartas;
+    private ArrayAdapter<Card> adapter;
 
     public MainActivityFragment() {
     }
@@ -49,7 +49,7 @@ public class MainActivityFragment extends Fragment {
         //Listcartas = new ArrayList<>(Arrays.asList(cartas));
         Listcartas = new ArrayList<>();
         //Listcartas = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(
+        adapter = new ArrayAdapter<Card>(
                 getContext(),
                 R.layout.lv_cartas_row,
                 R.id.txt_NameCard,
@@ -157,7 +157,7 @@ public class MainActivityFragment extends Fragment {
             adapter.clear();
             for(int x = 0; x < cards.size(); x++)
             {
-                adapter.add(cards.get(x).getName());
+                adapter.add(cards.get(x));
             }
         }
     }
