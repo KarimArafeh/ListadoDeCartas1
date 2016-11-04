@@ -6,7 +6,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.widget.ListViewAutoScrollHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,11 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringTokenizer;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -30,8 +25,8 @@ import java.util.StringTokenizer;
 public class MainActivityFragment extends Fragment {
 
 
-    private ArrayList<Card> Listcartas;
-    private ArrayAdapter<Card> adapter;
+    private ArrayList<String> Listcartas;
+    private ArrayAdapter<String> adapter;
 
     public MainActivityFragment() {
     }
@@ -48,7 +43,7 @@ public class MainActivityFragment extends Fragment {
 
         //Listcartas = new ArrayList<>(Arrays.asList(cartas));
         Listcartas = new ArrayList<>();
-        adapter = new ArrayAdapter<Card>(
+        adapter = new ArrayAdapter<String>(
                 getContext(),
                 R.layout.lv_cartas_row,
                 R.id.txt_NameCard,
@@ -62,11 +57,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        try {
-            refresh();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        refresh();
     }
 
     //Notifiquem a l'Activity que anem a agregar items de menu.
@@ -91,13 +82,7 @@ public class MainActivityFragment extends Fragment {
         int id = item.getItemId();
         if(id == R.id.action_refresh)
         {
-            try {
-
-                refresh();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            refresh();
 
             return true;
         }
@@ -105,7 +90,7 @@ public class MainActivityFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void refresh() throws IOException {
+    private void refresh() {
 
         /*
         CardAPI api = new CardAPI();
@@ -124,7 +109,8 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... params) {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String nombre = preferences.getString("color" , "Escribe un nombre");
+
+            String nombre = preferences.getString("color" , "white");
             String tipo = preferences.getString("rarity" , "FiltroPorDefecto");
 
             CardAPI api = new CardAPI();
@@ -155,7 +141,7 @@ public class MainActivityFragment extends Fragment {
             adapter.clear();
             for(int x = 0; x < cards.size(); x++)
             {
-                adapter.add(cards.get(x));
+                adapter.add(cards.get(x).getName());
             }
         }
     }
