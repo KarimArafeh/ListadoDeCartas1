@@ -48,7 +48,6 @@ public class MainActivityFragment extends Fragment {
 
         //Listcartas = new ArrayList<>(Arrays.asList(cartas));
         Listcartas = new ArrayList<>();
-        //Listcartas = new ArrayList<>();
         adapter = new ArrayAdapter<Card>(
                 getContext(),
                 R.layout.lv_cartas_row,
@@ -125,30 +124,29 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... params) {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String nombre = preferences.getString("name" , "NomPorDefecto");
-            String tipo = preferences.getString("type" , "TipoPorDefecto");
+            String nombre = preferences.getString("name" , "Escribe un nombre");
+            String tipo = preferences.getString("filtro" , "FiltroPorDefecto");
 
             CardAPI api = new CardAPI();
 
-            ArrayList<Card> cards = null;
+            ArrayList<Card> cards;
             try {
                 //cards = api.getAllCards();
-                if(tipo.equals("TipoPorDefecto"))
+                if(tipo.equals("FiltroPorDefecto"))
                 {
                     cards = api.getAllCards();
                 }else
                 {
                     cards = api.getCartasPorTipo(nombre);
                 }
+                //Log.d("CARDS", cards.toString());
+                Log.d("CARDS", cards != null ? cards.toString() : null);
+
+                return cards;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-            //Log.d("CARDS", cards.toString());
-            Log.d("CARDS", cards != null ? cards.toString() : null);
-
-            return cards;
+            return null;
         }
 
         @Override

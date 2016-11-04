@@ -24,7 +24,7 @@
         <item>Never</item>
     -->
     <string-array name="pref_opcions_filtrar_titles">
-        <item>Por Nombre</item>
+        <item>Por Color</item>
         <item>Por tipo</item>
     </string-array>
     <!--
@@ -34,7 +34,7 @@
         <item>-1</item>
     -->
     <string-array name="pref_opcions_filtrar_values">
-        <item>nombre</item>
+        <item>color</item>
         <item>tipo</item>
     </string-array>
 
