@@ -124,8 +124,8 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... params) {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String nombre = preferences.getString("name" , "Escribe un nombre");
-            String tipo = preferences.getString("filtro" , "FiltroPorDefecto");
+            String nombre = preferences.getString("color" , "Escribe un nombre");
+            String tipo = preferences.getString("rarity" , "FiltroPorDefecto");
 
             CardAPI api = new CardAPI();
 

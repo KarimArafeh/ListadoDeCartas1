@@ -8,15 +8,16 @@
 -->
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+
+
     <EditTextPreference
         android:capitalize="words"
-        android:defaultValue="NomPorDefecto"
+        android:defaultValue="white"
+        android:key="color"
         android:inputType="textCapWords"
-        android:key="name"
-        android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="Name" />
+        android:title="Color"/>
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
@@ -25,9 +26,9 @@
         android:defaultValue="-1"
         android:entries="@array/pref_opcions_filtrar_titles"
         android:entryValues="@array/pref_opcions_filtrar_values"
-        android:key="filtro"
+        android:key="rarity"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:title="Filtro" />
+        android:title="Rarity" />
 
 </PreferenceScreen>
