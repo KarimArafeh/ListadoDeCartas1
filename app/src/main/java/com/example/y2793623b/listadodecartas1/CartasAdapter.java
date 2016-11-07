@@ -1,7 +1,16 @@
 package com.example.y2793623b.listadodecartas1;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -15,5 +24,36 @@ public class CartasAdapter extends ArrayAdapter<Card> {
 
     public CartasAdapter(Context context, int resource, List<Card> objects) {
         super(context, resource, objects);
+    }
+
+
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+
+        // Obtenim l'objecte en la possició corresponent
+        Card carta = getItem(position);
+        Log.w("xxxxx", carta.toString());
+
+        if(convertView == null)
+        {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.lv_cartas_row, parent, false);
+        }
+
+        //unim el codi en les views del Layout
+        TextView cartaNom = (TextView) convertView.findViewById(R.id.CartaNom);
+
+        TextView cartaText = (TextView) convertView.findViewById(R.id.CartaText);
+        ImageView cartaImage = (ImageView) convertView.findViewById(R.id.CartaImage);
+
+        // Fiquem les dades dels objectes (provinents del JSON) en el layout
+        cartaNom.setText(carta.getName());
+        cartaText.setText(carta.getText());
+
+
+        // Retornem la View replena per a mostrarla
+        return convertView;
     }
 }
