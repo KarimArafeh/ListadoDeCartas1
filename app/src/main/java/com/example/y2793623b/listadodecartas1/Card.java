@@ -11,6 +11,7 @@ public class Card {
     String rarity;
     String set;
     String colors;
+    String imageUrl;
 
     public String getType() {
         return type;
@@ -62,6 +63,14 @@ public class Card {
         this.colors = colors;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
@@ -70,6 +79,7 @@ public class Card {
                 ", rarity='" + rarity + '\'' +
                 ", set='" + set + '\'' +
                 ", colors='" + colors + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", text='" + text + '\'' +
                 '}';
     }

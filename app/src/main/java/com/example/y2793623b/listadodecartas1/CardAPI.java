@@ -90,7 +90,8 @@ public class CardAPI {
                 carta.setRarity(jsonCard.getString("rarity"));
                 carta.setSet(jsonCard.getString("set"));
                 carta.setText(jsonCard.getString("text"));
-                carta.setColors(jsonCard.getString("colors"));
+                //carta.setColors(jsonCard.getString("colors"));
+                carta.setImageUrl(jsonCard.getString("imageUrl"));
 
                 cartas.add(carta);
 

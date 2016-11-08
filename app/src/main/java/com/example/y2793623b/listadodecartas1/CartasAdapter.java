@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -51,6 +53,8 @@ public class CartasAdapter extends ArrayAdapter<Card> {
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         cartaNom.setText(carta.getName());
         cartaText.setText(carta.getText());
+        //cartaImage.setImageURI();
+        //Glide.with(getContext()).load(carta.getImageUrl()).into(cartaImage);
 
 
         // Retornem la View replena per a mostrarla
