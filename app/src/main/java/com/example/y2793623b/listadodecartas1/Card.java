@@ -10,6 +10,7 @@ public class Card {
     String type;
     String rarity;
     String set;
+    String colors;
 
     public String getType() {
         return type;
@@ -53,6 +54,14 @@ public class Card {
 
     String text;
 
+    public String getColors() {
+        return colors;
+    }
+
+    public void setColors(String colors) {
+        this.colors = colors;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
@@ -60,6 +69,7 @@ public class Card {
                 ", type='" + type + '\'' +
                 ", rarity='" + rarity + '\'' +
                 ", set='" + set + '\'' +
+                ", colors='" + colors + '\'' +
                 ", text='" + text + '\'' +
                 '}';
     }

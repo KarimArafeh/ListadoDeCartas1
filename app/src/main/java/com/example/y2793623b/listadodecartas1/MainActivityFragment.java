@@ -109,20 +109,20 @@ public class MainActivityFragment extends Fragment {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-            String nombre = preferences.getString("color" , "white");
-            String tipo = preferences.getString("rarity" , "FiltroPorDefecto");
+            String colorIntroducido = preferences.getString("color" , "white");
+            String tipoIntroducido = preferences.getString("rarity" , "todas");
 
             CardAPI api = new CardAPI();
 
             ArrayList<Card> cards;
             try {
                 //cards = api.getAllCards();
-                if(tipo.equals("FiltroPorDefecto"))
+                if(tipoIntroducido.equals("todas"))
                 {
                     cards = api.getAllCards();
                 }else
                 {
-                    cards = api.getCartasPorTipo(nombre);
+                    cards = api.getCartasPorTipo(tipoIntroducido,colorIntroducido);
                 }
                 //Log.d("CARDS", cards.toString());
                 Log.d("CARDS", cards != null ? cards.toString() : null);
