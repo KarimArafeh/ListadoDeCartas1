@@ -55,6 +55,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
+                Card carta = (Card) adapterView.getItemAtPosition(position);
             }
         });
         return view;
