@@ -63,6 +63,8 @@ public class MainActivityFragment extends Fragment {
                 Intent intent = new Intent(getContext(), Activity_detail.class);
                 //poner las cartas dentro del intent
                 intent.putExtra("card",carta);
+                //llannem l'intent
+                startActivity(intent);
             }
         });
         return view;
