@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.gif.GifDrawableLoadProvider;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -63,6 +66,14 @@ public class Activity_detailFragment extends Fragment {
         cartaSet = (TextView) view.findViewById(R.id.CartaSet);
         cartaRarity = (TextView) view.findViewById(R.id.CartaRarity);
         cartaText = (TextView) view.findViewById(R.id.CartaText);
+
+        cartaName.setText(carta.getName());
+        cartaColor.setText(carta.getColors());
+        cartaSet.setText(carta.getSet());
+        cartaRarity.setText(carta.getRarity());
+        cartaText.setText(carta.getText());
+        Glide.with(getContext()).load(carta.getImageUrl()).into(cartaImage);
+
 
     }
 }
