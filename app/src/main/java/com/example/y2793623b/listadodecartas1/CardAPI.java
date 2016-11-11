@@ -91,13 +91,18 @@ public class CardAPI {
                 carta.setType(jsonCard.getString("type"));
                 carta.setRarity(jsonCard.getString("rarity"));
                 carta.setSet(jsonCard.getString("set"));
-                carta.setText(jsonCard.getString("text"));
+                if(jsonCard.has("text"))
+                {
+                    carta.setText(jsonCard.getString("text"));
+                }else
+                    carta.setText(null);
+
                 if(jsonCard.has("colors"))
                 {
                     carta.setColors(jsonCard.getString("colors"));
-                }
-                else
+                }else
                     carta.setColors(null);
+
                 if(jsonCard.has("imageUrl"))
                 {
                     carta.setColors(jsonCard.getString("imageUrl"));
