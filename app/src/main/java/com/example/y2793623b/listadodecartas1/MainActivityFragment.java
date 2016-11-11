@@ -1,11 +1,13 @@
 package com.example.y2793623b.listadodecartas1;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.ShareCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -56,6 +58,9 @@ public class MainActivityFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 Card carta = (Card) adapterView.getItemAtPosition(position);
+
+                //intent para llamar Activity_detail
+                Intent intent = new Intent(getContext(), Activity_detail.class);
             }
         });
         return view;
