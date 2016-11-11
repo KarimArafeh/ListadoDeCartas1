@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:hint="The Dark Knight"
-            android:textSize="12sp"
             android:textStyle="bold" />
 
         <TextView
@@ -39,6 +38,7 @@
             android:layout_alignLeft="@+id/CartaNom"
             android:layout_below="@+id/CartaNom"
             android:hint="91%"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="12sp" />
 
     </RelativeLayout>
