@@ -117,6 +117,7 @@ public class MainActivityFragment extends Fragment {
             ArrayList<Card> cards;
             try {
                 //cards = api.getAllCards();
+
                 if(tipoIntroducido.equals("todas"))
                 {
                     cards = api.getAllCards();
@@ -124,6 +125,8 @@ public class MainActivityFragment extends Fragment {
                 {
                     cards = api.getCartasPorTipo(tipoIntroducido,colorIntroducido);
                 }
+
+
                 //Log.d("CARDS", cards.toString());
                 Log.d("CARDS", cards != null ? cards.toString() : null);
 

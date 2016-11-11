@@ -1,6 +1,7 @@
 package com.example.y2793623b.listadodecartas1;
 
 import android.net.Uri;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,6 +50,7 @@ public class CardAPI {
                 .build();
 
         String url = builtUri.toString();
+        Log.d("URL", url);
 
                return doCall(url);
            }
@@ -90,8 +92,20 @@ public class CardAPI {
                 carta.setRarity(jsonCard.getString("rarity"));
                 carta.setSet(jsonCard.getString("set"));
                 carta.setText(jsonCard.getString("text"));
-                //carta.setColors(jsonCard.getString("colors"));
-                carta.setImageUrl(jsonCard.getString("imageUrl"));
+                if(jsonCard.has("colors"))
+                {
+                    carta.setColors(jsonCard.getString("colors"));
+                }
+                else
+                    carta.setColors(null);
+                if(jsonCard.has("imageUrl"))
+                {
+                    carta.setColors(jsonCard.getString("imageUrl"));
+                }else
+                    carta.setImageUrl(null);
+
+
+
 
                 cartas.add(carta);
 

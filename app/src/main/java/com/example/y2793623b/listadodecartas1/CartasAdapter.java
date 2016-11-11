@@ -36,7 +36,7 @@ public class CartasAdapter extends ArrayAdapter<Card> {
 
         // Obtenim l'objecte en la possició corresponent
         Card carta = getItem(position);
-        Log.w("xxxxx", carta.toString());
+        Log.w("xx", carta.toString());
 
         if(convertView == null)
         {
@@ -53,11 +53,12 @@ public class CartasAdapter extends ArrayAdapter<Card> {
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         cartaNom.setText(carta.getName());
         cartaText.setText(carta.getText());
-        //cartaImage.setImageURI();
-        //Glide.with(getContext()).load(carta.getImageUrl()).into(cartaImage);
+
+        Glide.with(getContext()).load(carta.getImageUrl()).into(cartaImage);
 
 
         // Retornem la View replena per a mostrarla
         return convertView;
+
     }
 }
