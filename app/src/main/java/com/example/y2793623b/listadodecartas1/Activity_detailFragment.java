@@ -43,7 +43,7 @@ public class Activity_detailFragment extends Fragment {
 
         if(i != null)
         {
-            Card carta = (Card) i.getSerializableExtra("carta");
+            Card carta = (Card) i.getSerializableExtra("cards");
 
             if(carta != null)
             {
