@@ -1,10 +1,12 @@
 package com.example.y2793623b.listadodecartas1;
 
+import java.io.Serializable;
+
 /**
  * Created by y2793623b on 18/10/16.
  */
 
-public class Card {
+public class Card implements Serializable{
 
     String name;
     String type;
