@@ -105,7 +105,7 @@ public class CardAPI {
 
                 if(jsonCard.has("imageUrl"))
                 {
-                    carta.setColors(jsonCard.getString("imageUrl"));
+                    carta.setImageUrl(jsonCard.getString("imageUrl"));
                 }else
                     carta.setImageUrl(null);
 
