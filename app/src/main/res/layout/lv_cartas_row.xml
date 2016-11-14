@@ -8,39 +8,41 @@
 
     <ImageView
         android:id="@+id/CartaImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:maxHeight="70dp"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="11dp"
+        android:layout_width="70dp"
+        android:layout_height="90dp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
+    <TextView
+        android:id="@+id/CartaNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="The First Card"
+        android:textStyle="bold"
+        android:layout_marginTop="13dp"
+        android:layout_alignTop="@+id/CartaImage"
         android:layout_toRightOf="@+id/CartaImage"
-        android:gravity="center_vertical">
+        android:layout_toEndOf="@+id/CartaImage"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp" />
 
-        <TextView
-            android:id="@+id/CartaNom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:hint="The Dark Knight"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/CartaText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/CartaNom"
-            android:layout_below="@+id/CartaNom"
-            android:hint="91%"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="12sp" />
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/CartaColor"
+        android:layout_height="wrap_content"
+        android:hint="White"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="12sp"
+        android:layout_below="@+id/CartaNom"
+        android:layout_alignLeft="@+id/CartaNom"
+        android:layout_alignStart="@+id/CartaNom"
+        android:layout_marginTop="13dp"
+        android:layout_width="wrap_content" />
 
 </RelativeLayout>

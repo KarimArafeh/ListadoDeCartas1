@@ -47,12 +47,12 @@ public class CartasAdapter extends ArrayAdapter<Card> {
         //unim el codi en les views del Layout
         TextView cartaNom = (TextView) convertView.findViewById(R.id.CartaNom);
 
-        TextView cartaText = (TextView) convertView.findViewById(R.id.CartaText);
+        TextView cartaColor = (TextView) convertView.findViewById(R.id.CartaColor);
         ImageView cartaImage = (ImageView) convertView.findViewById(R.id.CartaImage);
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         cartaNom.setText(carta.getName());
-        cartaText.setText(carta.getText());
+        cartaColor.setText(carta.getColors());
 
         Glide.with(getContext()).load(carta.getImageUrl()).into(cartaImage);
 
