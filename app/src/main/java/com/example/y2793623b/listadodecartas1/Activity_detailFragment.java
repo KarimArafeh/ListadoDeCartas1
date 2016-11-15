@@ -43,10 +43,12 @@ public class Activity_detailFragment extends Fragment {
 
         if(i != null)
         {
-            Card carta = (Card) i.getSerializableExtra("cards");
+            Card carta = (Card) i.getSerializableExtra("card");
 
+            //Log.d("--->>>>>>>>>>>","dentro del if (1)");
             if(carta != null)
             {
+                //Log.d("--->>>>>>>>>>>","dentro del if (2)");
                 updateUi(carta);
             }
 
