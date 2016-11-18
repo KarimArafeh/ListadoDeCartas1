@@ -18,6 +18,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import android.databinding.DataBindingUtil;
+
+import com.example.y2793623b.listadodecartas1.databinding.FragmentActivityDetailBinding;
+import com.example.y2793623b.listadodecartas1.databinding.FragmentMainBinding;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -37,23 +42,28 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        /*
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         ListView lvCartas = (ListView) view.findViewById(R.id.LvCartas);
-
+        */
         //String[] cartas = {"carta1" , "carta2" , "carta3" , "carta4" , "carta5"};
 
         //Listcartas = new ArrayList<>(Arrays.asList(cartas));
+        FragmentMainBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_main, container, false);
+        View view = binding.getRoot();
+
         Listcartas = new ArrayList<>();
         adapter = new CartasAdapter(
                 getContext(),
                 R.layout.lv_cartas_row,
                 Listcartas
         );
+        //lvCartas.setAdapter(adapter);
 
-        lvCartas.setAdapter(adapter);
-
-        lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.LvCartas.setAdapter(adapter);
+        binding.LvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
