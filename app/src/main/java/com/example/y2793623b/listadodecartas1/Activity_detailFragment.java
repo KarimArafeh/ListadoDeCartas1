@@ -82,11 +82,13 @@ public class Activity_detailFragment extends Fragment {
         cartaRarity.setText(carta.getRarity());
         cartaText.setText(carta.getText());
         */
-        binding.CartaName.setText(carta.getText());
-        binding.CartaColor.setText(carta.getColors());
-        binding.CartaRarity.setText(carta.getRarity());
-        binding.CartaSet.setText(carta.getSet());
-        binding.CartaText.setText(carta.getText());
+        binding.CartaName.setText("Card Name : " + carta.getName());
+        binding.CartaColor.setText("Color : " + carta.getColors());
+        binding.CartaRarity.setText("Rarity : " + carta.getRarity());
+        binding.CartaSet.setText("Set : " + carta.getSet());
+        binding.CartaText.setText("Card Info : \n" + carta.getText());
+
+
         Glide.with(getContext()).load(carta.getImageUrl()).into(binding.CartaImage);
 
 
