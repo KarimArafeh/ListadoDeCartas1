@@ -99,7 +99,14 @@ public class CardAPI {
 
                 if(jsonCard.has("colors"))
                 {
-                    carta.setColors(jsonCard.getString("colors"));
+                    String total_colors="";
+                    JSONArray colors = jsonCard.getJSONArray("colors");
+                    for (int i = 0; i < colors.length(); i++) {
+                        total_colors += colors.get(i).toString() + ", ";
+                    }
+
+                    carta.setColors(total_colors.substring(0, total_colors.length()-2));
+
                 }else
                     carta.setColors(null);
 
