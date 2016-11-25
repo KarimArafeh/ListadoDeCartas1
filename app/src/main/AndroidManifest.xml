@@ -36,6 +36,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.y2793623b.listadodecartas1.MainActivity" />
         </activity>
+
+        <provider
+            android:name=".CartasContentProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false" />
+
     </application>
 
 </manifest>
