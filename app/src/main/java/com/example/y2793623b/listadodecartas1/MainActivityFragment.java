@@ -171,6 +171,8 @@ public class MainActivityFragment extends Fragment {
             Uri cardUri = helper.getUri(Card.class);
             cupboard().withContext(getContext()).put(cardUri, Card.class, resultat);
 
+            DataManager.saveCartas(resultat, getContext());
+
         /*
         @Override
         protected void onPostExecute(ArrayList<Card> cards) {
