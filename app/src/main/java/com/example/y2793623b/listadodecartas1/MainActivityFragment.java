@@ -7,7 +7,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.ShareCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
+import android.net.Uri;
+import nl.littlerobots.cupboard.tools.provider.UriHelper;
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 import android.databinding.DataBindingUtil;
 
@@ -128,11 +129,11 @@ public class MainActivityFragment extends Fragment {
         task.execute();
     }
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Card>> {
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
 
 
         @Override
-        protected ArrayList<Card> doInBackground(Void... params) {
+        protected Void doInBackground(Void... voids) {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
@@ -141,31 +142,36 @@ public class MainActivityFragment extends Fragment {
 
             //CardAPI api = new CardAPI();
 
-            ArrayList<Card> cards;
+            ArrayList<Card> resultat = null;
             try {
-                //cards = api.getAllCards();
+                //resultat = api.getAllCards();
 
                 if(tipoIntroducido.equals("todas"))
                 {
-                    //cards = api.getAllCards();
-                    cards = CardAPI.getAllCards();
+                    //resultat = api.getAllCards();
+                    resultat = CardAPI.getAllCards();
                 }else
                 {
-                    //cards = api.getCartasPorTipo(tipoIntroducido,colorIntroducido);
-                    cards = CardAPI.getCartasPorTipo(tipoIntroducido,colorIntroducido);
+                    //resultat = api.getCartasPorTipo(tipoIntroducido,colorIntroducido);
+                    resultat = CardAPI.getCartasPorTipo(tipoIntroducido,colorIntroducido);
                 }
 
 
-                //Log.d("CARDS", cards.toString());
-                Log.d("CARDS", cards != null ? cards.toString() : null);
+                //Log.d("CARDS", resultat.toString());
+                Log.d("CARDS", resultat != null ? resultat.toString() : null);
 
-                return cards;
+                //return resultat;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
-        }
+            //return null;
+        //}
 
+            UriHelper helper = UriHelper.with(CartasContentProvider.AUTHORITY);
+            Uri cardUri = helper.getUri(Card.class);
+            cupboard().withContext(getContext()).put(cardUri, Card.class, resultat);
+
+        /*
         @Override
         protected void onPostExecute(ArrayList<Card> cards) {
             super.onPostExecute(cards);
@@ -174,6 +180,8 @@ public class MainActivityFragment extends Fragment {
             {
                 adapter.add(cards.get(x));
             }
+            */
+        return null;
         }
     }
 
