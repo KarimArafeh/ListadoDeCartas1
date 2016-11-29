@@ -139,7 +139,7 @@ public class MainActivityFragment extends Fragment {
             String colorIntroducido = preferences.getString("color" , "white");
             String tipoIntroducido = preferences.getString("rarity" , "todas");
 
-            CardAPI api = new CardAPI();
+            //CardAPI api = new CardAPI();
 
             ArrayList<Card> cards;
             try {
@@ -147,10 +147,12 @@ public class MainActivityFragment extends Fragment {
 
                 if(tipoIntroducido.equals("todas"))
                 {
-                    cards = api.getAllCards();
+                    //cards = api.getAllCards();
+                    cards = CardAPI.getAllCards();
                 }else
                 {
-                    cards = api.getCartasPorTipo(tipoIntroducido,colorIntroducido);
+                    //cards = api.getCartasPorTipo(tipoIntroducido,colorIntroducido);
+                    cards = CardAPI.getCartasPorTipo(tipoIntroducido,colorIntroducido);
                 }
 
 
