@@ -35,7 +35,8 @@ public class MainActivityFragment extends Fragment {
 
 
     private ArrayList<Card> Listcartas;
-    private CartasAdapter adapter;
+    //private CartasAdapter adapter;
+    private CartasCursorAdapter adapter;
 
     public MainActivityFragment() {
     }
@@ -57,11 +58,14 @@ public class MainActivityFragment extends Fragment {
         View view = binding.getRoot();
 
         Listcartas = new ArrayList<>();
+        /*
         adapter = new CartasAdapter(
                 getContext(),
                 R.layout.lv_cartas_row,
                 Listcartas
         );
+        */
+        adapter = new CartasCursorAdapter(getContext(), Card.class);
         //lvCartas.setAdapter(adapter);
 
         binding.LvCartas.setAdapter(adapter);
