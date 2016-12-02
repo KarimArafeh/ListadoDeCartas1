@@ -22,4 +22,9 @@ public class DataManager {
         cupboard().withContext(context).put(CARD_URI, Card.class, cartas);
     }
 
+    static void deleteCartas(Context context)
+    {
+        cupboard().withContext(context).delete(CARD_URI, "_id > ?", "1");
+    }
+
 }

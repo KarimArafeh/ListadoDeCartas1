@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -171,6 +172,7 @@ public class MainActivityFragment extends Fragment {
             Uri cardUri = helper.getUri(Card.class);
             cupboard().withContext(getContext()).put(cardUri, Card.class, resultat);
             */
+            DataManager.deleteCartas(getContext());
             DataManager.saveCartas(resultat, getContext());
 
         /*
