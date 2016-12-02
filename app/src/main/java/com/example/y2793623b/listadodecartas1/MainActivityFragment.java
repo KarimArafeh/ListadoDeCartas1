@@ -1,5 +1,6 @@
 package com.example.y2793623b.listadodecartas1;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -41,6 +42,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     //private ArrayList<Card> Listcartas;
     //private CartasAdapter adapter;
     private CartasCursorAdapter adapter;
+    private ProgressDialog dialog;
 
     public MainActivityFragment() {
     }
@@ -72,6 +74,9 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         adapter = new CartasCursorAdapter(getContext(), Card.class);
         //lvCartas.setAdapter(adapter);
 
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage("esta Loading cabrones .....");
+
         binding.LvCartas.setAdapter(adapter);
         binding.LvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -96,7 +101,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        refresh();
+        //refresh();
     }
 
     //Notifiquem a l'Activity que anem a agregar items de menu.
@@ -159,6 +164,12 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            dialog.show();
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -213,6 +224,13 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
             }
             */
         return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            dialog.dismiss();
         }
     }
 
