@@ -111,6 +111,18 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         return view;
     }
 
+    @Events.Subscribe("start-downloading-data")
+    void preRefresh()
+    {
+        dialog.show();
+    }
+
+    @Events.Subscribe("finish-downloading-data")
+    void afterRefresh()
+    {
+        dialog.dismiss();
+    }
+
     boolean esTablet()
     {
         return getResources().getBoolean(R.bool.tablet);
@@ -120,6 +132,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     public void onStart() {
         super.onStart();
         //refresh();
+        Events.register(this);
     }
 
     //Notifiquem a l'Activity que anem a agregar items de menu.
