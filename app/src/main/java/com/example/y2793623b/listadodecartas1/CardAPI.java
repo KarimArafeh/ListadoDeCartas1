@@ -90,7 +90,7 @@ public class CardAPI {
                 carta.setName(jsonCard.getString("name"));
                 carta.setType(jsonCard.getString("type"));
                 carta.setRarity(jsonCard.getString("rarity"));
-                carta.setSet(jsonCard.getString("set"));
+                carta.setMySet(jsonCard.getString("set"));
                 if(jsonCard.has("text"))
                 {
                     carta.setText(jsonCard.getString("text"));

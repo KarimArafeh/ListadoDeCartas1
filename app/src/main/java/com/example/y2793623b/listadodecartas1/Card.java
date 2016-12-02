@@ -11,7 +11,7 @@ public class Card implements Serializable{
     String name;
     String type;
     String rarity;
-    String set;
+    String mySet;
     String colors;
     String imageUrl;
 
@@ -23,12 +23,12 @@ public class Card implements Serializable{
         this.type = type;
     }
 
-    public String getSet() {
-        return set;
+    public String getMySet() {
+        return mySet;
     }
 
-    public void setSet(String set) {
-        this.set = set;
+    public void setMySet(String mySet) {
+        this.mySet = mySet;
     }
 
     public String getText() {
@@ -79,7 +79,7 @@ public class Card implements Serializable{
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", rarity='" + rarity + '\'' +
-                ", set='" + set + '\'' +
+                ", mySet='" + mySet + '\'' +
                 ", colors='" + colors + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", text='" + text + '\'' +

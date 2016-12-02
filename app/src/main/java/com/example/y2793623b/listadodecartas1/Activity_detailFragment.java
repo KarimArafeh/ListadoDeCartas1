@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 //import org.ecaib.rottentomatoesclient2016.databinding.FragmentDetailBinding;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.gif.GifDrawableLoadProvider;
 import com.example.y2793623b.listadodecartas1.databinding.FragmentActivityDetailBinding;
 
 /**
@@ -78,14 +77,14 @@ public class Activity_detailFragment extends Fragment {
 
         cartaName.setText(carta.getName());
         cartaColor.setText(carta.getColors());
-        cartaSet.setText(carta.getSet());
+        cartaSet.setText(carta.getMySet());
         cartaRarity.setText(carta.getRarity());
         cartaText.setText(carta.getText());
         */
         binding.CartaName.setText("Card Name : " + carta.getName());
         binding.CartaColor.setText("Color : " + carta.getColors());
         binding.CartaRarity.setText("Rarity : " + carta.getRarity());
-        binding.CartaSet.setText("Set : " + carta.getSet());
+        binding.CartaSet.setText("Set : " + carta.getMySet());
         binding.CartaText.setText("Card Info : \n" + carta.getText());
 
 
