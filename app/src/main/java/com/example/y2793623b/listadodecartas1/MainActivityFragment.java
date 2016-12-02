@@ -15,9 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.net.Uri;
-import nl.littlerobots.cupboard.tools.provider.UriHelper;
-import static nl.qbusict.cupboard.CupboardFactory.cupboard;
+//import android.net.Uri;
+//import nl.littlerobots.cupboard.tools.provider.UriHelper;
+//import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 import android.databinding.DataBindingUtil;
 
@@ -166,11 +166,11 @@ public class MainActivityFragment extends Fragment {
             }
             //return null;
         //}
-
+            /*
             UriHelper helper = UriHelper.with(CartasContentProvider.AUTHORITY);
             Uri cardUri = helper.getUri(Card.class);
             cupboard().withContext(getContext()).put(cardUri, Card.class, resultat);
-
+            */
             DataManager.saveCartas(resultat, getContext());
 
         /*
