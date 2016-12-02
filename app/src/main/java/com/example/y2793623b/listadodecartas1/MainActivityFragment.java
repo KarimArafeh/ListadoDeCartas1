@@ -160,7 +160,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
         Log.d("CARDS", cards);
         */
-        RefreshDataTask task = new RefreshDataTask();
+        RefreshDataTask task = new RefreshDataTask(getActivity().getApplicationContext());
         task.execute();
     }
 
@@ -180,77 +180,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     }
 
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            dialog.show();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-            String colorIntroducido = preferences.getString("color" , "white");
-            String tipoIntroducido = preferences.getString("rarity" , "todas");
-
-            //CardAPI api = new CardAPI();
-
-            ArrayList<Card> resultat = null;
-            try {
-                //resultat = api.getAllCards();
-
-                if(tipoIntroducido.equals("todas"))
-                {
-                    //resultat = api.getAllCards();
-                    resultat = CardAPI.getAllCards();
-                }else
-                {
-                    //resultat = api.getCartasPorTipo(tipoIntroducido,colorIntroducido);
-                    resultat = CardAPI.getCartasPorTipo(tipoIntroducido,colorIntroducido);
-                }
-
-
-                //Log.d("CARDS", resultat.toString());
-                Log.d("CARDS", resultat != null ? resultat.toString() : null);
-
-                //return resultat;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            //return null;
-        //}
-            /*
-            UriHelper helper = UriHelper.with(CartasContentProvider.AUTHORITY);
-            Uri cardUri = helper.getUri(Card.class);
-            cupboard().withContext(getContext()).put(cardUri, Card.class, resultat);
-            */
-            DataManager.deleteCartas(getContext());
-            DataManager.saveCartas(resultat, getContext());
-
-        /*
-        @Override
-        protected void onPostExecute(ArrayList<Card> cards) {
-            super.onPostExecute(cards);
-            adapter.clear();
-            for(int x = 0; x < cards.size(); x++)
-            {
-                adapter.add(cards.get(x));
-            }
-            */
-        return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            dialog.dismiss();
-        }
-    }
 
 
 }
