@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class CardAPI {
 
     private static final String BASE_URL = "https://api.magicthegathering.io/v1/cards";
+    private static final int PAGES = 10;
 
 
     static ArrayList<Card> getAllCards() throws IOException {
@@ -55,21 +56,35 @@ public class CardAPI {
                return doCall(url);
            }
 
+    private static String getUrlPage(int page) {
+        Uri builtUri = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendQueryParameter("page", String.valueOf(page))
+                .build();
+        return builtUri.toString();
+    }
 
 
     static ArrayList<Card> doCall(String url) {
 
         String JsonResponse = null;
+        ArrayList<Card> cards = new ArrayList<>();
 
-        try {
+        for (int i = 0; i < PAGES; i++) {
 
-            JsonResponse = HttpUtils.get(url);
+            try {
 
-        } catch (IOException e) {
-            e.printStackTrace();
+                JsonResponse = HttpUtils.get(url);
+                ArrayList<Card> list = processJson(JsonResponse);
+                cards.addAll(list);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
-        return processJson(JsonResponse);
+        return cards;
 
     }
 
