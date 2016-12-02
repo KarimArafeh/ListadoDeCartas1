@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 //import org.ecaib.rottentomatoesclient2016.databinding.FragmentDetailBinding;
 
+import com.alexvasilkov.events.Events;
 import com.bumptech.glide.Glide;
 import com.example.y2793623b.listadodecartas1.databinding.FragmentActivityDetailBinding;
 
@@ -33,6 +34,13 @@ public class Activity_detailFragment extends Fragment {
 
 
     public Activity_detailFragment() {
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Events.register(this);
     }
 
     @Override
@@ -62,6 +70,12 @@ public class Activity_detailFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Events.Subscribe("card-selected")
+    private void onCartaSelected(Card card)
+    {
+        updateUi(card);
     }
 
     private void updateUi(Card carta)

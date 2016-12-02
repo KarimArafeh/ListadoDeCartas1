@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 
 import android.databinding.DataBindingUtil;
 
+import com.alexvasilkov.events.Events;
 import com.example.y2793623b.listadodecartas1.databinding.FragmentActivityDetailBinding;
 import com.example.y2793623b.listadodecartas1.databinding.FragmentMainBinding;
 
@@ -98,6 +99,9 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                     intent.putExtra("card",carta);
                     //llannem l'intent
                     startActivity(intent);
+                } else
+                {
+                    Events.create("card-selected").param(carta).post();
                 }
             }
         });
