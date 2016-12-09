@@ -76,7 +76,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         //lvCartas.setAdapter(adapter);
 
         dialog = new ProgressDialog(getContext());
-        dialog.setMessage("esta Loading cabrones .....");
+        dialog.setMessage("esta Loading los datos .....");
 
         binding.LvCartas.setAdapter(adapter);
         binding.LvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
