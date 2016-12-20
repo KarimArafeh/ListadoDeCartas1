@@ -101,6 +101,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                     startActivity(intent);
                 } else
                 {
+
                     Events.create("card-selected").param(carta).post();
                 }
             }
