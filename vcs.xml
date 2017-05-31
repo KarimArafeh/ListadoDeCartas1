@@ -18,8 +18,12 @@
           <option name="url" value="https://github.com/KarimArafeh/Teams_Players_Info.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/KarimArafeh/Map_Fotos_Pro.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="$USER_HOME$/karim/M08/Teams_players_app" />
+    <option name="cloneParentDir" value="$USER_HOME$/karim/M08/Map_Fotos_Pro" />
   </component>
 </application>
